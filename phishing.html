@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Phishing</title>
+  <meta charset="UTF-8">
+  <title>Sound 1</title>
 </head>
 <body>
-  <h1>Phishing</h1>
-  <audio controls autoplay>
+  <h1>Playing Phishing</h1>
+  <audio id="player" autoplay>
     <source src="Phishing.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+
+  <script>
+    // Attempt to play after page load
+    window.addEventListener('load', function () {
+      var audio = document.getElementById("player");
+      var playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise.catch(function (error) {
+          console.log("Autoplay failed: " + error);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
